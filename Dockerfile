@@ -1,8 +1,8 @@
 # Stage 1: Build libvirt exporter
-FROM golang:alpine
+FROM alpine:3.8
 
 # Install dependencies
-RUN apk add --update git gcc g++ make libc-dev portablexdr-dev linux-headers libnl-dev perl libtirpc-dev pkgconfig wget
+RUN apk add --update ca-certificates git gcc g++ go libnl-dev linux-headers make perl pkgconf libtirpc-dev wget && update-ca-certificates
 RUN wget ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz -P /tmp && \
     tar -xf /tmp/libxml2-2.9.4.tar.gz -C /tmp
 WORKDIR /tmp/libxml2-2.9.4
